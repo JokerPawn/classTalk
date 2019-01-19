@@ -1,0 +1,27 @@
+{
+  "name": "class-talk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JokerPawn/classTalk.git"
+  },
+  "author": "Joker",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JokerPawn/classTalk/issues"
+  },
+  "homepage": "https://github.com/JokerPawn/classTalk#readme",
+  "dependencies": {
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "express-session": "^1.11.3",
+    "formidable": "^1.0.17",
+    "gm": "^1.20.0",
+    "mongodb": "^2.0.43"
+  }
+}
