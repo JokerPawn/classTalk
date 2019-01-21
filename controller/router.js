@@ -108,7 +108,7 @@ exports.showUserList = function (req, res, next) {
     })
 }
 
-exports.showRegist = function (req, res, result) {
+exports.showRegist = function (req, res, next) {
     res.render('regist',{
        'login': req.session.login == '1' ? true : false,
         'usernmae': req.session.login == '1' ? req.session.username : '',
@@ -255,7 +255,7 @@ exports.doCut = function (req, res, next) {
             $set:{'avatar': avatar}
         }, function (err ,result) {
             res.send('1');
-        })
-    })
+        });
+    });
 }
 
