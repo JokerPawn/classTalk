@@ -1,7 +1,7 @@
 var MongoClient = require('mongodb').MongoClient;
 
 function _connectDB(callback) {
-    var url = 'mongodb://localhost:27017/talk';
+    var url = 'mongodb://localhost:27017/classTalk';
     MongoClient.connect(url, function (err, db) {
         if (err) {
             callback(err, null);

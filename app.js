@@ -23,6 +23,7 @@ app.get('/cut', router.showCut);
 app.post('doCut', router.doCut);
 app.post('/setAvatar', router.setAvatar);
 app.get('/user/:user', router.showUser);
+app.get('/user/:_id', router.showUser);
 app.get('/userList', router.showUserList);
 app.post('/post', router.doPost);
 app.get('/getAllTalk', router.getAllTalk);
