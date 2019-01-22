@@ -229,7 +229,8 @@ exports.showCut = function (req, res, next) {
     res.render('cut', {
         'username': req.session.username,
         'login': true,
-        'avatar': req.session.avatar
+        'avatar': req.session.avatar,
+        'active':'cut'
     });
 }
 
