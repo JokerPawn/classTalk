@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./favicon.ico">
+
+    <title>classTalk <%= username%>talk</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <style type='text/css'>
+        body{
+            padding-top: 120px;
+        }
+        img{
+            border-radius: 50%;
+        }
+        .oneTalk{
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<% include header.ejs %>
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 oneTalk">
+            <% for (var i = 0; i < talk.length; i++) { %>
+            <img src="/avatar/<%= avatar%>" alt="">
+            <h1><%= talk[i].username%>的个人主页</h1>
+            <p><%= talk[i].content%></p>
+            <p><%= talk[i].datetime%></p>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<footer>
+    <p>&copy; 2018 Company, Inc.</p>
+</footer>
+
+
+<script src="/js/jquery-1.11.3.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./favicon.ico">
+
+    <title>classTalk cut</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <style type='text/css'>
+        body{
+            padding-top: 120px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<% include header.ejs %>
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <h1>剪切头像</h1>
+            <img src="/avatar/<%= avatar%>" id='target' alt="[Jcrop Example]" />
+            <div id="preview-pane">
+                <div class="preview-container">
+                    <img src="/avatar/<%= avatar%>" id='jcrop-preview' alt="Preview" />
+                </div>
+            </div>
+            <input type="button" value='裁剪' id='btn'>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<footer>
+    <p>&copy; 2018 Company, Inc.</p>
+</footer>
+
+
+<script src="/js/jquery-1.11.3.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/xiaoguo.js"></script>
+<script src="/js/jquery.Jcrop.js"></script>
+<script src="/js/jquery.min.js"></script>
+
+<script type='text/javascript'>
+    $('input').click(function () {
+        var w = parseInt($('#jcrop-holder > div:first').css('width'));
+        var h = parseInt($('#jcrop-holder > div:first').css('height'));
+        var x = parseInt($('#jcrop-holder > div:first').css('left'));
+        var y = parseInt($('#jcrop-holder > div:first').css('top'));
+        $.get('/doCut',{
+            x : x,
+            y : y,
+            w : w,
+            h : h
+        }, function (result) {
+            if (result == '1') {
+                alert('裁剪成功');
+                window.location = '/';
+            }
+        });
+    });
+</script>
+</body>
+</html>

@@ -20,7 +20,7 @@ app.post('/doRegist', router.doRegist);
 app.get('/login', router.showLogin);
 app.post('doLogin', router.doLogin);
 app.get('/cut', router.showCut);
-app.post('doCut', router.doCut);
+app.get('doCut', router.doCut);
 app.get('/setAvatar', router.setAvatar);
 app.post('/doSetAvatar', router.doSetAvatar);
 app.get('/user/:user', router.showUser);

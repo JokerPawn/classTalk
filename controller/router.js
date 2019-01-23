@@ -247,7 +247,7 @@ exports.doCut = function (req, res, next) {
     gm('./avatar/' + avatar)
     .crop(w, h, x, y)
     .resize(100, 100, '!')
-    .write('./avatar' + avatar , function (err) {
+    .write('./avatar/' + avatar , function (err) {
         if (err) {
             res.send('-1');
             return;
