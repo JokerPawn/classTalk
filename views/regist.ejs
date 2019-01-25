@@ -7,12 +7,18 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="./favicon.ico">
+    <link rel="icon" href="/favicon.ico">
 
     <title>classTalk regist</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <style type='text/css'>
+        body{
+            padding-top: 120px;
+        }
+    </style>
 
 </head>
 
@@ -38,7 +44,7 @@
                         <input type="checkbox"> 我遵守约定
                     </label>
                 </div>
-                <p><a class="btn btn-success" href="/login" role="button" id='login'>登陆</a></p>
+                <p><a class="btn btn-default" href="javascript:void(0);" role="button" id='regist'>注册</a></p>
             </form>
             <div class="alert alert-danger" role="alert" style='display: none;'></div>
         </div>
@@ -51,6 +57,9 @@
     <p>&copy; 2018 Company, Inc.</p>
 </footer>
 
+<script src="/js/jquery-1.11.3.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
 <script type='text/javascript'>
     //文本框获取焦点后，警告框错误提示消失
     $('input').focus(function () {
@@ -58,14 +67,14 @@
     });
 
     //登陆按钮登陆
-    $('#login').click(function () {
+    $('#regist').click(function () {
         //ajax
-        $.post('/doLogin', {
-            username: $('#username').val(),
-            password: $('#password').val()
+        $.post('/doRegist', {
+            'username': $('#username').val(),
+            'password': $('#password').val()
         }, function (result) {
             if (result == '1') {
-                window.location = '/';//登陆成功
+                window.location = '/';//注册成功
             } else if (result == '-1') {
                 $('.alert').fadeIn().html('用户名被占用');
             } else if (result == '-3') {
@@ -75,7 +84,5 @@
     });
 </script>
 
-<script src="/js/jquery-1.11.3.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -53,7 +53,10 @@ exports.doPost = function (req, res, next) {
 
 exports.getAllTalk = function (req, res, next) {
     var page = req.query.page;
-    db.find('posts', {}, {'pageamount':9, 'page':page, 'sort':{datetime:-1}}, function (err, result) {
+    db.find('posts', {}, {'pageamount':9, 'page':page, 'sort':{'datetime':-1}}, function (err, result) {
+        if (err) {
+            console.log(err);
+        }
         res.json(result);
     });
 }
@@ -82,16 +85,16 @@ exports.getTalkAmount = function (req, res, next) {
 
 exports.showUser = function (req, res, next) {
     var user = req.params['user'];
-    var _id = req.params['_id'];
-    db.find('posts', {'username': user} || {'_id': _id}, function (err, result) {
-        var user1 = result[0].username;
-        db.find('users', {'username': user1}, function (err, result2) {
+
+    db.find('posts', {'username': user}, function (err, result) {
+        db.find('users', {'username': user}, function (err, result2) {
             res.render('user',{
                 'username': req.session.login == '1' ? req.session.username : '',
                 'login': req.session.login == '1' ? true : false,
-                'active': 'sbtalk',
-                'avatar': result2[0].avatar,
-                'talk': result
+                'active': user == req.session.username ? 'mytalk' : 'sbtalk',
+                'userAvatar': result2[0].avatar,
+                'talk': result,
+                'user': user
             });
         });
     });
@@ -117,6 +120,7 @@ exports.showRegist = function (req, res, next) {
 }
 
 exports.doRegist = function (req, res, next) {
+
     var form = new formidable.IncomingForm();
     form.parse(req, function(err, fields, files) {
         var username = fields.username;
@@ -133,7 +137,7 @@ exports.doRegist = function (req, res, next) {
             //无相同用户名，加密密码
             password = md5(md5(password) + 'Joker');
             //向数据库添加注册用户信息
-            db.insertOne('uers', {
+            db.insertOne('users', {
                 'username': username,
                 'password': password,
                 'avatar': 'moren.jpg'
@@ -243,7 +247,7 @@ exports.doCut = function (req, res, next) {
     var w = req.query.w;
     var h = req.query.h;
     var x = req.query.x;
-    var y =req.query.y;
+    var y = req.query.y;
     gm('./avatar/' + avatar)
     .crop(w, h, x, y)
     .resize(100, 100, '!')

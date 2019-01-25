@@ -7,9 +7,9 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="./favicon.ico">
+    <link rel="icon" href="/favicon.ico">
 
-    <title>classTalk <%= username%>talk</title>
+    <title>classTalk <%= user%>talk</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -34,12 +34,14 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="container">
     <div class="row">
-        <div class="col-lg-6 oneTalk">
+        <div class="col-lg-6">
+            <img src="/avatar/<%= userAvatar%>" alt="">
+            <h1><%= user%>的个人主页</h1>
             <% for (var i = 0; i < talk.length; i++) { %>
-            <img src="/avatar/<%= avatar%>" alt="">
-            <h1><%= talk[i].username%>的个人主页</h1>
-            <p><%= talk[i].content%></p>
-            <p><%= talk[i].datetime%></p>
+            <div class="oneTalk">
+                <p><%= talk[i].content%></p>
+                <p><%= talk[i].datetime%></p>
+            </div>
             <% } %>
         </div>
     </div>

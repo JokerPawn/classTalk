@@ -7,9 +7,9 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="./favicon.ico">
+    <link rel="icon" href="../../favicon.ico">
 
-    <title>classTalk <%= username%>talk</title>
+    <title>classTalk userlist</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -34,13 +34,15 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="container">
     <div class="row">
-        <div class="col-lg-6 oneTalk" style='overflow: hidden;'>
+        <div class="col-lg-6">
             <h1>所有成员</h1>
             <% for (var i = 0; i < allUser.length; i++) { %>
-            <a href="/user/<%= allUser[i].username%>" target='_blank'>
-                <p style='float: left;'><img src="/avatar/<%= allUser[i].avatar%>" alt=""></p>
-                <p style='float: left;'><%= allUser[i].username%></p>
-            </a>
+            <div class="oneTalk" style='overflow: hidden;'>
+                <a href="/user/<%= allUser[i].username%>" target='_blank'>
+                    <p style='float: left;'><img src="/avatar/<%= allUser[i].avatar%>" alt=""></p>
+                    <p style='float: left;'><%= allUser[i].username%></p>
+                </a>
+            </div>
             <% } %>
         </div>
     </div>

@@ -7,12 +7,15 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="./favicon.ico">
+    <link rel="icon" href="/favicon.ico">
 
     <title>classTalk cut</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/css/jquery.Jcrop.css">
+
 
     <style type='text/css'>
         body{
@@ -50,21 +53,22 @@
 
 <script src="/js/jquery-1.11.3.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/js/xiaoguo.js"></script>
-<script src="/js/jquery.Jcrop.js"></script>
+
 <script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.Jcrop.js"></script>
+<script type="text/javascript" src="/js/xiaoguo.js"></script>
 
 <script type='text/javascript'>
     $('input').click(function () {
-        var w = parseInt($('#jcrop-holder > div:first').css('width'));
-        var h = parseInt($('#jcrop-holder > div:first').css('height'));
-        var x = parseInt($('#jcrop-holder > div:first').css('left'));
-        var y = parseInt($('#jcrop-holder > div:first').css('top'));
+        var w = parseInt($('.jcrop-holder > div:first').css('width'));
+        var h = parseInt($('.jcrop-holder > div:first').css('height'));
+        var x = parseInt($('.jcrop-holder > div:first').css('left'));
+        var y = parseInt($('.jcrop-holder > div:first').css('top'));
         $.get('/doCut',{
-            x : x,
-            y : y,
-            w : w,
-            h : h
+            'w' : w,
+            'h' : h,
+            'x' : x,
+            'y' : y
         }, function (result) {
             if (result == '1') {
                 alert('裁剪成功');
